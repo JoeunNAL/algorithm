@@ -1,5 +1,4 @@
 function solution(common) {
-    const length = common.length;
     const firstGap = common[1]-common[0]
     const lastGap = common.at(-1)- common.at(-2)
     // 등차
