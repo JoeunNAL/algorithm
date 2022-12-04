@@ -1,12 +1,11 @@
 function solution(chicken) {
     let result = 0
-    let cupones, freeChicken;
+    let cupones;
     
     while(parseInt(chicken/10)>0){
-        freeChicken = parseInt(chicken/10);
         cupones = chicken%10;
-        result += freeChicken;
-        chicken = freeChicken+cupones;    
+        result += parseInt(chicken/10);
+        chicken = parseInt(chicken/10)+cupones;    
     }
     
     return result;
