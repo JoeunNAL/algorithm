@@ -1,8 +1,3 @@
 function solution(my_string) {
-    const result=[];
-    for(let char of my_string){
-        const toNumber = Number(char);
-        !isNaN(toNumber) ? result.push(toNumber) : null;
-    }
-    return result.sort();
+    return my_string.match(/\d/g).map(el=>Number(el)).sort()
 }
