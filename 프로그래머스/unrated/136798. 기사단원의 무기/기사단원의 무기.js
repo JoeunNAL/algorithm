@@ -1,21 +1,21 @@
-function solution(number, limit, power) {
-    const divisorCount = new Array(number).fill(1).map((el,idx)=> {
-        const currentElement = el+idx;
-        const counters = [];
-        
-        for(let i = 1; i<=Math.sqrt(currentElement); i++){
-            if(currentElement%i === 0) {
-                counters.push(i);
-                if(currentElement/i !== i)counters.push(currentElement/i);
-            }
-        }
-        return counters.length
-    });
+function getDivisorCount(number){
+    let count = 0;
     
-    const sum = divisorCount.reduce((acc,cur)=>{
-        const currentElement = cur > limit ? power: cur;
-        return acc+currentElement
-    },0)
+    for(let i = 1; i*i <= number; i++){
+        if(number%i === 0) count+=2;
+        if(i*i === number) count--;
+    }
+    
+    return count;
+}
+
+function solution(number, limit, power) {
+    let sum = 0;
+    
+    for(let i = 1; i<= number; i++){
+        let count = getDivisorCount(i)
+        sum += (count>limit)? power: count;
+    }
     
     return sum;
 }
