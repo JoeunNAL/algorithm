@@ -1,11 +1,13 @@
 function solution(n) {
-    const divisor=[];
+    let sum =0;
     for (i = 0; i*i<=n; i++){
-        if(n%i !== 0)continue;
-        divisor.push(i);
-        if(i===n/i) continue;
-        divisor.push(n/i);
+        if(n%i !== 0) continue;
+        
+        sum += i;
+        if(i !== n/i){
+            sum += n/i;            
+        }
     }
-    return divisor.reduce((acc,cur)=>acc+cur,0)
+    return sum;
     
 }
