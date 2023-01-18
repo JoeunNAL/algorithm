@@ -1,15 +1,13 @@
+// 시간 비교용
 function solution(k, score) {
-    const result =[];
-    const ranks = [];
-    
-    for(let i = 0; i < score.length; i++){
-        ranks.push(score[i]);
+    const ranks =[];
+    return score.reduce((acc,cur) => {
+        ranks.push(cur);
         ranks.sort((a,b) => b-a);
-        if(i>=k){
+        if(ranks.length > k){
             ranks.pop();
         }
-        result.push(ranks.at(-1));
-    }
-    
-    return result;
+        acc.push(ranks.at(-1));
+        return acc;
+    },[]);
 }
