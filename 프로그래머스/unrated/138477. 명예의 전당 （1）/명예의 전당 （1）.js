@@ -1,13 +1,16 @@
 function solution(k, score) {
     const result =[];
     let ranks = [];
-    for(let i =0; i<score.length; i++){
+    
+    for(let i = 0; i < score.length; i++){
         ranks.push(score[i]);
-        ranks = ranks.sort((a,b)=>b-a);
-        if(i>=k){
-            ranks = ranks.slice(0,k);
+        ranks.sort((a,b) => b-a);
+        if(i >= k){
+            result.push(ranks[k-1]);
+        }else{
+            result.push(ranks[ranks.length-1]);        
         }
-        result.push(ranks.at(-1));
     }
+    
     return result;
 }
