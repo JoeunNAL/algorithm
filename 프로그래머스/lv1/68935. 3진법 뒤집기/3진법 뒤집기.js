@@ -10,13 +10,5 @@ function makeTernaryString(num){
 
 function solution(n) {
     const reverseString = makeTernaryString(n).split('').reverse().join('');
-    
-    let result = 0;
-    const lastIndex = reverseString.length-1;
-    
-    for(let i = lastIndex ; i >= 0; i--){
-        result += reverseString[i]*3**(lastIndex-i);
-    }
-    
-    return result;
+    return parseInt(reverseString,3)
 }
