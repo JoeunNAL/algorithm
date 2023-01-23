@@ -1,17 +1,7 @@
 function solution(d, budget) {
-    let result;
     d.sort((a,b)=> a-b);
     
-    if(d[0]>budget){
-        return 0;
-    }
-    
-    d.reduce((acc,cur,idx)=>{
-        if(acc+cur <= budget){
-           result = idx;
-           return acc+cur;
-        };
+    return d.reduce((count,cur,idx)=>{
+        return count + Number((budget-=cur) >= 0) ;
     },0);
-    
-    return result+1;
 };
