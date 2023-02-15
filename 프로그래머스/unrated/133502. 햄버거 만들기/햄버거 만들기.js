@@ -8,11 +8,9 @@ function solution(ingredient) {
            && stack.at(-2) === 2
            && stack.at(-3) === 1
           ){
-            const stackLength = stack.length;
             stack.pop();
             stack.pop();
             stack.pop();
-            // stack = stack.slice(0, stackLength-3);
             count += 1;
         } else{
             stack.push(el);
