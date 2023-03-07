@@ -2,18 +2,18 @@ function solution(today, terms, privacies) {
     const [currentYear, currentMonth, currentDay] = today.split('.').map(el => +el);
     const currentGap = makeGapDays(currentYear,currentMonth,currentDay);
     
-    terms = terms.map(el=>{
-        const arr = el.split(' ');
-        arr[1] = +arr[1];
-        return arr;
+    // 만기 기한 조회용
+    const dueDates = {};
+    terms.forEach(el=>{
+        const [key, value] = el.split(' ');
+        dueDates[key] = +value;
     });
     
     return privacies.reduce((acc, cur, idx)=>{
         const [collectDate, termKey] = cur.split(' ');
         const [collectYear, collectMonth, collectDay] = collectDate.split('.').map(el => +el);
+        const collectGap = makeGapDays(collectYear, collectMonth + dueDates[termKey], collectDay);
         
-        const termDate = terms.filter(el => el[0] === termKey)[0][1];
-        const collectGap = makeGapDays(collectYear, collectMonth+termDate, collectDay);
         if(collectGap <= currentGap){
             acc.push(idx+1);
         }
