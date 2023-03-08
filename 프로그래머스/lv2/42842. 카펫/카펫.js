@@ -1,14 +1,14 @@
 function solution(brown, yellow) {
     const sum = brown + yellow;
-    let short = Math.floor(Math.sqrt(sum));
+    let short = 3;
     
-    while(short > 3){
-        const long = sum/short;
-        if(sum%short === 0 && (long-2)*(short-2) === yellow){
-            return [long, short];
-        } else {
-            short--;
+    for(let i = short; i*i<= sum; i++){
+        const isFillYellow = (i-2)*((sum/i)-2) === yellow;
+        if(isFillYellow){
+            short = i;
+            break;
         }
-    };
-    return [sum/3, 3];
+    }
+    
+    return [sum/short, short];
 }
